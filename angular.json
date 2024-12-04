@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/list-sorter",
+            "outputPath": "dist/SortingSteps",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "list_Sorter:build:production"
+              "buildTarget": "SortingSteps:build:production"
             },
             "development": {
-              "buildTarget": "list_Sorter:build:development"
+              "buildTarget": "SortingSteps:build:development"
             }
           },
           "defaultConfiguration": "development"
