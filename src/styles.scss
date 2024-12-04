@@ -75,6 +75,14 @@ input {
   }
 }
 
+/* Labels */
+label {
+  color: $primary-color;
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
   color: $primary-color;
@@ -93,7 +101,7 @@ ul {
 
 /* Container */
 .container {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 20px;
   background-color: darken($background-dark, 5%);
@@ -125,18 +133,46 @@ table {
 
 /* Animation for Sorting Steps */
 .sorting-step {
-  background-color: $accent-color;
-  color: $text-light;
-  padding: 10px;
+  animation: fadeIn 1.5s ease-out forwards;
   margin: 5px 0;
-  border-radius: 4px;
-  animation: fadeIn 0.5s ease;
 
   &.highlight {
-    background-color: $secondary-color;
+    background-color: lighten(#458588, 20%); // Adjusted secondary color.
+    border: 1px solid lighten(#458588, 40%);
   }
 }
 
+.breaking-step, .merging-step {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  font-size: 16px;
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.breaking-step {
+  background-color: $accent-color;
+  color: $text-light;
+}
+
+.merging-step {
+  background-color: $secondary-color;
+  color: $text-light;
+}
+
+/* Highlight for merging steps */
+.merging-step.highlight {
+  background-color: lighten($secondary-color, 10%);
+  border: 1px solid $primary-color;
+}
+
+/* Add some spacing and separation between breaking and merging steps */
+.breaking-step + .merging-step {
+  margin-top: 20px;
+}
+
+/* Animation for sorting steps */
 @keyframes fadeIn {
   from {
     opacity: 0;

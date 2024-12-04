@@ -18,5 +18,22 @@
   </div>
 
   <!-- The output Section:  -->
-  <div class="output"></div>
+  <div class="output">
+    <p>(In Recursive Order)</p>
+    <h3>Breaking Down: </h3>
+    <div *ngFor="let step of breakingSteps; " class="sorting-step breaking-step">
+      {{ step }}
+    </div>
+
+    <h3>Merging:</h3>
+    <div *ngFor="let step of mergingSteps;" class="sorting-step merging-step">
+      {{ step }}
+    </div>
+
+      <h3>Sorted List:</h3>
+    <div class="sorted-list">
+      {{ sortedList.join(', ') }}
+    </div>
+
+  </div>
 </div>

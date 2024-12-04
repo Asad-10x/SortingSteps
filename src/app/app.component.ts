@@ -1,12 +1,13 @@
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FormsModule],
+  imports: [RouterOutlet, FormsModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
@@ -22,7 +23,7 @@ export class AppComponent {
   private static INVALID_INPUT_MESSAGE = 'Please enter a valid list of numbers separated by commas & a space ", "';
 
   // constructor:
-  constructor() {};
+  constructor(private cdr: ChangeDetectorRef) {};
 
   // Class methods
   onSubmit() {
@@ -52,7 +53,7 @@ export class AppComponent {
   parseInput(input: string): number[] {
     try{
       return input
-      .split(', ')
+      .split(',')
       .map((item) => parseInt(item.trim(), 10))
       .filter((num) => !isNaN(num));
     }
@@ -85,9 +86,13 @@ export class AppComponent {
     const mid: number = Math.floor(size/2);
     let left: number[] = this.mergeSort(list.slice(0,mid));
     let right: number[] = this.mergeSort(list.slice(mid));
+    const merged: number[] = this.merge(left, right);
+
+    this.breakingSteps.push(`Breaking: ${list.join(', ')}`);
+    this.mergingSteps.push(`Merging: ${merged.join(', ')}`);
 
     // return merge
-    return this.merge(left, right);
+    return merged;
   }
 
   // Merge function of merge-sort algo
@@ -105,9 +110,8 @@ export class AppComponent {
       }
     }
 
-    // return statement
-    return [...sortedList,...left.slice(i),...right.slice(j)];
+    const result = [...sortedList,...left.slice(i),...right.slice(j)];
+
+    return result;
   }
-
-
 }
