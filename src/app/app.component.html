@@ -1,4 +1,7 @@
+<!-- The container that contains both, the input and the output sections. -->
 <div class="container">
+
+  <!-- The input Section:  -->
   <div class="input">
     <form (ngSubmit)="onSubmit()">
       <label for="unordered-list">Un-ordered List</label>
@@ -10,9 +13,10 @@
         name="unorderedList"
         required
       >
-
+      <button type="submit">Sort</button>
     </form>
   </div>
 
+  <!-- The output Section:  -->
   <div class="output"></div>
 </div>
